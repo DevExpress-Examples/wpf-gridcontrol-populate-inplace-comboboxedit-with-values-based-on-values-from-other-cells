@@ -7,7 +7,7 @@
 # How to populate ComboBoxEdit's ItemsSource based on values from other cells
 
 
-GridControl can display lookup editors in column cells. Such editors can work with a shared data source or different sources for each data row. It is possible to customize these sources further, depending on values in other cells of the same column. Use one of the following approaches to accomplish this task:
+GridControl can display lookup editors in column cells. Such editors can work with a shared data source or different sources for each data row. It is possible to customize these sources further, depending on values in other cells of the same row. Use one of the following approaches to accomplish this task:
 
 * The [LookUpEditBase.FilterCriteria](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.LookUpEditBase.FilterCriteria) property
 
