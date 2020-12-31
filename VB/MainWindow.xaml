@@ -1,0 +1,64 @@
+<Window
+    x:Class="FilterCombo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:local="clr-namespace:FilterCombo"
+    Width="500"
+    Height="300"
+    Title="Main Window">
+
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <dxg:GridControl ItemsSource="{Binding Cars}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="FilterType">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEnumSettings EnumType="{x:Type local:RowFilterType}" UseUnderlyingEnumValue="False" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Color">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <dxe:ComboBoxEdit
+                                DisplayMember="Color"
+                                FilterCriteria="{Binding RowData.Row.FilterType, Converter={local:FilterConverter}}"
+                                IsTextEditable="False"
+                                ItemsSource="{Binding View.DataContext.ComboItems}"
+                                Name="PART_Editor"
+                                ValueMember="Color" />
+                            <DataTemplate.Triggers>
+                                <DataTrigger Value="{x:Null}" Binding="{Binding ItemsSource, ElementName=PART_Editor}">
+                                    <Setter TargetName="PART_Editor" Property="FilterCriteria" Value="{x:Null}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Color">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <dxe:ComboBoxEdit
+                                DisplayMember="Color"
+                                IsTextEditable="False"
+                                Name="PART_Editor"
+                                ValueMember="Color">
+                                <dxe:ComboBoxEdit.ItemsSource>
+                                    <MultiBinding Converter="{local:MultiBindingConverter}">
+                                        <Binding Path="View.DataContext.ComboItems" />
+                                        <Binding Path="RowData.Row.FilterType" />
+                                        <Binding Path="IsEditorActive" RelativeSource="{RelativeSource Self}" />
+                                    </MultiBinding>
+                                </dxe:ComboBoxEdit.ItemsSource>
+                            </dxe:ComboBoxEdit>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+    </Grid>
+</Window>
