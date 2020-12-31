@@ -16,3 +16,6 @@ Our lookup editors provide the capability to filter their data source. The main 
 * A [MultiBinding](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.multibinding?view=netcore-3.1) object
 
 An alternative way to achieve the required result is to use the multibinding approach. Specify multiple bindings in a MultiBinding object and create a converter (implementing the [IMultiValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.imultivalueconverter?view=netcore-3.1) interface) to produce a final value for the binding target property based on values of those bindings.
+
+See also:
+[How to build binding paths within WPF Grid control cells](https://github.com/DevExpress-Examples/how-to-build-binding-paths-in-gridcontrol-cells)
