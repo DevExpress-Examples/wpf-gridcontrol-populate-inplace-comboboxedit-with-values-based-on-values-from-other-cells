@@ -1,8 +1,8 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [Window1.xaml](./CS/Window1.xaml) (VB: [Window1.xaml](./VB/Window1.xaml))
-* [Window1.xaml.cs](./CS/Window1.xaml.cs) (VB: [Window1.xaml.vb](./VB/Window1.xaml.vb))
+* [Window1.xaml](./CS/MainWindow.xaml) (VB: [Window1.xaml](./VB/MainWindow.xaml))
+* [Window1.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [Window1.xaml.vb](./VB/MainWindow.xaml.vb))
 <!-- default file list end -->
 # How to populate ComboBoxEdit's ItemsSource based on values from other cells
 
