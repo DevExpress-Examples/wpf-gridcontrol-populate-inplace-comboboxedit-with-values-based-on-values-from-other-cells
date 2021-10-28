@@ -1,125 +1,95 @@
-﻿Imports DevExpress.Mvvm
-Imports System
+Imports DevExpress.Mvvm
 Imports System.Collections.ObjectModel
-Imports System.ComponentModel
-Imports System.Linq
 
 Namespace FilterCombo
-	Friend Class MainViewModel
-		Inherits ViewModelBase
 
-		Private _cars As ObservableCollection(Of Car)
-		Private _comboItems As ObservableCollection(Of ComboItem)
+    Public Enum FilterType
+        PrimaryColor
+        SecondaryColor
+    End Enum
 
-		Public Sub New()
-			Cars = New ObservableCollection(Of Car)()
+    Public Class ComboBoxItem
+        Inherits BindableBase
 
-			Cars.Add(New Car() With {
-				.Color = "Red",
-				.FilterType = RowFilterType.Type1
-			})
-			Cars.Add(New Car() With {
-				.Color = "Azure",
-				.FilterType = RowFilterType.Type2
-			})
-			Cars.Add(New Car() With {
-				.Color = "Blue",
-				.FilterType = RowFilterType.Type1
-			})
+        Public Property Color As String
+            Get
+                Return GetValue(Of String)()
+            End Get
 
-			ComboItems = New ObservableCollection(Of ComboItem)()
+            Set(ByVal value As String)
+                SetValue(value)
+            End Set
+        End Property
 
-			ComboItems.Add(New ComboItem() With {
-				.Color = "Red",
-				.FilterType = RowFilterType.Type1
-			})
-			ComboItems.Add(New ComboItem() With {
-				.Color = "Brown",
-				.FilterType = RowFilterType.Type1
-			})
-			ComboItems.Add(New ComboItem() With {
-				.Color = "Blue",
-				.FilterType = RowFilterType.Type1
-			})
-			ComboItems.Add(New ComboItem() With {
-				.Color = "Violet",
-				.FilterType = RowFilterType.Type2
-			})
-			ComboItems.Add(New ComboItem() With {
-				.Color = "Azure",
-				.FilterType = RowFilterType.Type2
-			})
-		End Sub
+        Public Property FilterType As FilterType
+            Get
+                Return GetValue(Of FilterType)()
+            End Get
 
-		Public Property Cars() As ObservableCollection(Of Car)
-			Get
-				Return _cars
-			End Get
-			Set(ByVal value As ObservableCollection(Of Car))
-				SetProperty(_cars, value, Function() Cars)
-			End Set
-		End Property
-		Public Property ComboItems() As ObservableCollection(Of ComboItem)
-			Get
-				Return _comboItems
-			End Get
-			Set(ByVal value As ObservableCollection(Of ComboItem))
-				SetProperty(_comboItems, value, Function() ComboItems)
-			End Set
-		End Property
-	End Class
+            Set(ByVal value As FilterType)
+                SetValue(value)
+            End Set
+        End Property
+    End Class
 
-	Public Enum RowFilterType
-		Type1
-		Type2
-	End Enum
+    Public Class Car
+        Inherits BindableBase
 
-	Public Class ComboItem
-		Inherits BindableBase
+        Public Property Color As String
+            Get
+                Return GetValue(Of String)()
+            End Get
 
-		Private _color As String
-		Private _filterType As RowFilterType
+            Set(ByVal value As String)
+                SetValue(value)
+            End Set
+        End Property
 
-		Public Property Color() As String
-			Get
-				Return _color
-			End Get
-			Set(ByVal value As String)
-				SetProperty(_color, value, Function() Color)
-			End Set
-		End Property
-		Public Property FilterType() As RowFilterType
-			Get
-				Return _filterType
-			End Get
-			Set(ByVal value As RowFilterType)
-				SetProperty(_filterType, value, Function() _filterType)
-			End Set
-		End Property
-	End Class
+        Public Property FilterType As FilterType
+            Get
+                Return GetValue(Of FilterType)()
+            End Get
 
-	Public Class Car
-		Inherits BindableBase
+            Set(ByVal value As FilterType)
+                SetValue(value)
+            End Set
+        End Property
+    End Class
 
-		Private _color As String
-		Private _filterType As RowFilterType
+    Public Class MainViewModel
+        Inherits ViewModelBase
 
-		Public Property Color() As String
-			Get
-				Return _color
-			End Get
-			Set(ByVal value As String)
-				SetProperty(_color, value, Function() Color)
-			End Set
-		End Property
-		<RefreshProperties(RefreshProperties.All)>
-		Public Property FilterType() As RowFilterType
-			Get
-				Return _filterType
-			End Get
-			Set(ByVal value As RowFilterType)
-				SetProperty(_filterType, value, Function() FilterType)
-			End Set
-		End Property
-	End Class
+        Public Property Cars As ObservableCollection(Of Car)
+            Get
+                Return GetValue(Of ObservableCollection(Of Car))()
+            End Get
+
+            Set(ByVal value As ObservableCollection(Of Car))
+                SetValue(value)
+            End Set
+        End Property
+
+        Public Property ComboBoxItems As ObservableCollection(Of ComboBoxItem)
+            Get
+                Return GetValue(Of ObservableCollection(Of ComboBoxItem))()
+            End Get
+
+            Set(ByVal value As ObservableCollection(Of ComboBoxItem))
+                SetValue(value)
+            End Set
+        End Property
+
+        Public Sub New()
+            Cars = GetCars()
+            ComboBoxItems = GetComboBoxItems()
+        End Sub
+
+        Private Shared Function GetCars() As ObservableCollection(Of Car)
+            Return New ObservableCollection(Of Car) From {New Car() With {.Color = "Yellow", .FilterType = FilterType.PrimaryColor}, New Car() With {.Color = "Green", .FilterType = FilterType.SecondaryColor}}
+        End Function
+
+        Private Shared Function GetComboBoxItems() As ObservableCollection(Of ComboBoxItem)
+            Return New ObservableCollection(Of ComboBoxItem) From {New ComboBoxItem() With {.Color = "Red", .FilterType = FilterType.PrimaryColor}, New ComboBoxItem() With {.Color = "Yellow", .FilterType = FilterType.PrimaryColor}, New ComboBoxItem() With {.Color = "Blue", .FilterType = FilterType.PrimaryColor}, New ComboBoxItem() With {.Color = "Orange", .FilterType = FilterType.SecondaryColor}, New ComboBoxItem() With {.Color = "Green", .FilterType = FilterType.SecondaryColor}, New ComboBoxItem() With {.Color = "Violet", .FilterType = FilterType.SecondaryColor}}
+        End Function
+    End Class
 End Namespace
