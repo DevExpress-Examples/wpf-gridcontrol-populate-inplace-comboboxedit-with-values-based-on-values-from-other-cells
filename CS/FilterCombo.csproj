@@ -36,6 +36,7 @@
     <Reference Include="DevExpress.Data.v21.1" />
     <Reference Include="DevExpress.Mvvm.v21.1" />
     <Reference Include="DevExpress.Data.Desktop.v21.1" />
+    <Reference Include="DevExpress.Printing.v21.1.Core" />
     <Reference Include="DevExpress.Xpf.Core.v21.1" />
     <Reference Include="DevExpress.Xpf.Grid.v21.1" />
     <Reference Include="DevExpress.Xpf.Grid.v21.1.Core" />
