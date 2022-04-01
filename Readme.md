@@ -7,11 +7,10 @@
 *Files to look at*:
 
 * [MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))
 * [MainViewModel.cs](./CS/MainViewModel.cs) (VB: [MainViewModel.vb](./VB/MainViewModel.vb))
 * [Converters.cs](./CS/Converters.cs) (VB: [Converters.vb](./VB/Converters.vb))
 <!-- default file list end -->
-# How to populate ComboBoxEdit's ItemsSource based on values from other cells
+# How to Populate ComboBoxEdit's ItemsSource Based on Values From Other Cells
 
 
 GridControl can display lookup editors in column cells. Such editors can work with a shared data source or different sources for each data row. It is possible to customize these sources further, depending on values in other cells of the same row. Use one of the following approaches to accomplish this task:
