@@ -20,15 +20,7 @@
 
             <dxg:GridColumn Header="Colors (via FilterCriteria)"
                             FieldName="Color">
-
-                <dxg:GridColumn.EditSettings>
-                    <dxe:ComboBoxEditSettings ItemsSource="{Binding ComboBoxItems}"
-                                              DisplayMember="Color"
-                                              ValueMember="Color"
-                                              IsTextEditable="False" />
-                </dxg:GridColumn.EditSettings>
-
-                <dxg:GridColumn.CellEditTemplate>
+                <dxg:GridColumn.CellTemplate>
                     <DataTemplate>
                         <dxe:ComboBoxEdit DisplayMember="Color"
                                           ItemsSource="{Binding View.DataContext.ComboBoxItems}"
@@ -42,23 +34,14 @@
                             </DataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>
-                </dxg:GridColumn.CellEditTemplate>
-                
+                </dxg:GridColumn.CellTemplate>
             </dxg:GridColumn>
 
             <dxg:GridColumn Header="Colors (via MultiBinding Object)"
                             FieldName="Color">
-
-                <dxg:GridColumn.EditSettings>
-                    <dxe:ComboBoxEditSettings ItemsSource="{Binding ComboBoxItems}"
-                                              DisplayMember="Color"
-                                              ValueMember="Color"
-                                              IsTextEditable="False" />
-                </dxg:GridColumn.EditSettings>
-
-                <dxg:GridColumn.CellEditTemplate>
+                <dxg:GridColumn.CellTemplate>
                     <DataTemplate>
-                        <dxe:ComboBoxEdit DisplayMember="Color"                                              
+                        <dxe:ComboBoxEdit DisplayMember="Color"
                                           IsTextEditable="False"
                                           Name="PART_Editor"
                                           ValueMember="Color">
@@ -71,7 +54,7 @@
                             </dxe:ComboBoxEdit.ItemsSource>
                         </dxe:ComboBoxEdit>
                     </DataTemplate>
-                </dxg:GridColumn.CellEditTemplate>
+                </dxg:GridColumn.CellTemplate>
             </dxg:GridColumn>
 
             <dxg:GridControl.View>

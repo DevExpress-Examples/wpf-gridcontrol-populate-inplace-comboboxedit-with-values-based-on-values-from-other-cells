@@ -3,7 +3,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 
@@ -22,8 +21,6 @@ namespace FilterCombo {
 
     public class MultiBindingConverter : MarkupExtension, IMultiValueConverter {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
-            if(values[0] == DependencyProperty.UnsetValue || values[1] == DependencyProperty.UnsetValue)
-                return Binding.DoNothing;
             return (bool)values[2]
                 ? ((ObservableCollection<ComboBoxItem>)values[0]).Where(item => item.FilterType.Equals((FilterType)values[1])).ToList()
                 : values[0];

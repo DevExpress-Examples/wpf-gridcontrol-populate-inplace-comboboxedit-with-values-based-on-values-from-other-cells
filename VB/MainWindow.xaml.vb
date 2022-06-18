@@ -6,7 +6,7 @@ Namespace FilterCombo
         Inherits Window
 
         Public Sub New()
-            Me.InitializeComponent()
+            InitializeComponent()
         End Sub
     End Class
 End Namespace

@@ -3,7 +3,6 @@ Imports System
 Imports System.Collections.ObjectModel
 Imports System.Globalization
 Imports System.Linq
-Imports System.Windows
 Imports System.Windows.Data
 Imports System.Windows.Markup
 
@@ -31,7 +30,6 @@ Namespace FilterCombo
         Implements IMultiValueConverter
 
         Public Function Convert(ByVal values As Object(), ByVal targetType As Type, ByVal parameter As Object, ByVal culture As CultureInfo) As Object Implements IMultiValueConverter.Convert
-            If values(0) Is DependencyProperty.UnsetValue OrElse values(1) Is DependencyProperty.UnsetValue Then Return Binding.DoNothing
             Return If(CBool(values(2)), CType(values(0), ObservableCollection(Of ComboBoxItem)).Where(Function(item) item.FilterType.Equals(CType(values(1), FilterType))).ToList(), values(0))
         End Function
 
