@@ -5,6 +5,10 @@
 <!-- default badges end -->
 # Populate ComboBoxEdit's ItemsSource Based on Values from Other Cells
 
+This example demonstrates how to populate a GridControl's in-place ComboBoxEdit with values based on the type of its neighbouring cells.
+
+![image](https://user-images.githubusercontent.com/12169834/183652084-c06f59be-8c23-4a15-be68-a2938158fa28.png)
+
 GridControl can display lookup editors in column cells. You can bind these editors to shared data sources or use a different data source for each data row. Use one of the following approaches to customize these sources:
 
 * The [LookUpEditBase.FilterCriteria](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.LookUpEditBase.FilterCriteria) property
