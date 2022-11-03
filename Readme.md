@@ -5,19 +5,19 @@
 <!-- default badges end -->
 # Populate ComboBoxEdit's ItemsSource Based on Values from Other Cells
 
-This example demonstrates how to populate a GridControl's in-place ComboBoxEdit with values based on the type of its neighbouring cells.
+This example demonstrates how to populate our WPF [GridControl](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridControl)'s in-place [ComboBoxEdit](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.ComboBoxEdit) with values based on neighboring cell type.
 
 ![image](https://user-images.githubusercontent.com/12169834/183652084-c06f59be-8c23-4a15-be68-a2938158fa28.png)
 
-GridControl can display lookup editors in column cells. You can bind these editors to shared data sources or use a different data source for each data row. Use one of the following approaches to customize these sources:
+The DevExpress WPF GridControl can display lookup editors within column cells. You can bind these editors to shared data sources or use a different data source for each data row. Use one of the following methods to customize these sources:
 
 * The [LookUpEditBase.FilterCriteria](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.LookUpEditBase.FilterCriteria) property
 
-  Our lookup editors allow you to filter their data source. The main idea of this approach is to dynamically construct a filter depending on values from other cells. If you use this approach, you should implement a conversion logic in the scope of a custom binding converter class that implements the [IValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter?view=netcore-3.1) interface.
+  Our lookup editors allow you to filter associated data source values. This method dynamically constructs a filter based on values from other cells. If you use this strategy, you should implement conversion logic in the scope of a custom binding converter class that implements the [IValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter) interface.
 
 * A [MultiBinding](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.multibinding?view=netcore-3.1) object
 
-  In this approach, you should specify multiple bindings in a MultiBinding object and create a converter (implementing the [IMultiValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.imultivalueconverter?view=netcore-3.1) interface) to produce a final value for the binding target property based on values of those bindings.
+  If you opt for this strategy, you should specify multiple bindings in a MultiBinding object and create a converter (implementing the [IMultiValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.imultivalueconverter) interface) to produce a final value for the binding target property (based on the values of those bindings).
 
 <!-- default file list -->
 ## Files to Look At
